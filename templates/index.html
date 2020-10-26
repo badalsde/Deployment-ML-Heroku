@@ -1,548 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Badal's Portfolio</title>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Small Icon that appears in the brower's tab -->
-	<link rel="icon" href="{{ url_for('static', filename='img/icon.ico')}}" type="image/x-icon">					
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-	<!-- To ensure proper rendering and touch zooming in Mobile Phones-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-
-	<!-- For Font-Aswesome Icons -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- Latest compiled and minified Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-
-	<!-- Javascript Plugin for Smooth Scrolling -->
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.smoothscroll.js')}}"></script>
-
-	<!-- plugins for animations -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.min.css')}}">
-	<script type="text/javascript" src="{{ url_for('static', filename='js/wow.min.js')}}"></script>
-	<script type="text/javascript">new WOW().init()</script>
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Satisfy|Questrial|Roboto" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Charm|Neuton" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400i|Quicksand:500" rel="stylesheet">
-
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='portfolio.css')}}">
 </head>
+<style type="text/css">
+  .content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+</style>
+<body>
+<!--Main Content Start-->
+<div class="container">
+	<div class="content-section">
+    <form action="{{ url_for('predict')}}"method="post">
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">House Price Prediction </legend>
+          
 
-<body id="my-portfolio" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Area</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="area">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Bedrooms</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" name="bedroom">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Age</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="age">
+  </div>
 
-	<!-- Header for Navbar and Banner Text -->
-	<header class="container-fluid bg-header" id="home">
+  <button type="submit" class="btn btn-primary">Predict Price</button>
 
-		<!-- For Adding Background Color -->
-		<div class="header-bg-gray">
-			
-			<!-- Navigation Bar Begins -->
-			<nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md" id="my-navbar">
-				
-				<!-- Navbar Brand Logo -->
-				<<!-- a href="#home" class="navbar-brand">
-					<img src="img/bw-logo-t3.png" style="height: 35px;">
-				</a> -->
+  <div>
+    {{ prediction_text }}
+  </div>
 
-				<!-- Toggler button to replace navbar when browser is collapse into smaller resolution -->
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content"
-				aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+</fieldset>
+    </form>
+  </div>  
+</div>
+<!--Main Content End-->
 
-				<!-- navbar links -->
-				<div class="collapse navbar-collapse" id="navbar-content">
-					<!-- ml-auto right aligns the links -->
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item">
-							<a href="#home" class="nav-link">Home</a>
-						</li>
-						<li class="nav-item">
-							<a href="#portfolio" class="nav-link">Portfolio</a>
-						</li>
-						<li class="nav-item">
-							<a href="#about" class="nav-link">About</a>
-						</li>
-						<li class="nav-item">
-							<a href="#publication" class="nav-link">Publication</a>
-						</li>
-						<li class="nav-item">
-							<a href="#contact" class="nav-link">Contact</a>
-						</li>
-					</ul>
-				</div>
-			</nav> <!-- Navigation bar ends -->
-
-			 <!-- container for banner text -->
-			 <div class="container">
-			 	<div class="row">
-			 		<div class="col-md-12 wow bounceInUp" data-wow-delay="0.2s">
-			 			
-			 			<!-- Banner Text -->
-			 			<div class="banner-text">
-			 				<h2>Hi, my name is <span class="decorate">Badal Kumar</span></h2>
-			 				<p>A Data Scientist who is passionate in tech</p>
-			 			</div>
-
-			 			<!-- scroll to about section -->
-			 			<!-- <div class="scroll-to-about text-center">
-			 				<a href="#about"><i class="fa fa-angle-down"></i></a>
-			 			</div> -->
-			 		</div>
-			 	</div>
-			 </div>
-		</div>
-	</header>
-
-	<!-- Portfolio section begins -->
-	 <section class="section-padding" id="portfolio">
-	 	<div class="container">
-	 		
-	 		<!-- Title Text -->
-	 		<div class="row">
-	 			<div class="col-sm-12">
-	 				<h2 class="title text-center projects">
-	 					<span class="decorate">Projects</span> I have worked on
-	 				</h2>
-	 			</div>
-	 		</div>
-	 		<!-- Imagegrid or thumbnails -->
-	 		<div class="container">
-	 			<div id="my-grid" class="grid-padding">
-	 				<div class="row">
-	 					<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.7s">
- 							<div class="inner-container project-container ">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/visualization.jpg')}}" class=" fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">Visualization and Exploration</p>
-									</div>
-									<!-- <div class="col-sm-12"> -->
-									<p class="text-left date">January 2019</p>
-									<!-- </div> -->
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">Initialize data exploration and visualization to further understand datasets.</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>Pandas</li>
-											<li>Plotly</li>
-											<li>Sklearn</li>
-										</ul>
-									</div> -->
-									<div class="details">
-										<div class="content">
-											<a href="https://medium.com/@badalchat/data-preprocessing-e1acaeab92a0" target="_blank">
-												<button type="button" class="btn btn-light">Medium</button>
-											</a>
-											<br>
-											<br>
-											<a href="https://github.com/badalchat/Python/tree/master/Data Visualization" target="_blank"> 
-												<button type="button" class="btn btn-light">Github</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
- 						</div>
- 						
- 						<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.3s">
- 							<div class="inner-container project-container">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/customerchurn.jpg')}}" class="fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">Churn Analysis and Prediction
-										</p>
-									</div>
-									<!-- <div class="col-sm-12"> -->
-									<p class="text-left date">April 2019</p>
-									<!-- </div> -->
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">Performing Data Exploration, Visualization, Preprocessing and Machine Learning to analyze and predict potential churn customers</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>Python</li>
-											<li>Apache Airflow</li>
-											<li>SQL</li>
-										</ul>
-									</div> -->
-									<div class="details">
-										<div class="content">
-											<a href="https://medium.com/@badalchat/skill-set-of-a-data-scientist-1c5f82b5702" target="_blank">
-												<button type="button" class="btn btn-light">Medium</button>
-											</a>
-											<br>
-											<br>
-											<a href="https://github.com/badalchat/Churn-Analysis-and-Prediction" target="_blank">
-												<button type="button" class="btn btn-light">Github</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
- 						</div>
- 						<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.1s">
- 							<div class="inner-container project-container">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/House.jpg')}}" class="fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">Banglore House Price Prediction</p>
-									</div>
-									<p class="text-left date"> September 2019</p>
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">Performing Data Exploration, Visualization, Preprocessing and Machine Learning to analyze and Predict House Price.</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>Python</li>
-											<li>Pandas</li>
-											<li>Plotly</li>
-										</ul>
-									</div> -->
-									<div class="details">
-										<div class="content">
-											<a href="https://medium.com/@badalchat/predict-house-prices-using-python-6176f5b7651a" target="_blank">
-												<button type="button" class="btn btn-light">Medium</button>
-											</a>
-											<br>
-											<br>
-											<a href="https://github.com/badalchat/Banglore_Home_Prices_Project" target="_blank">
-												<button type="button" class="btn btn-light">Github</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
- 						</div>
-	 				</div>
-
-
-	 				<!-- second row -->
-	 				<div class="row">
- 						<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.5s">
- 							<div class="inner-container project-container">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/News.png')}}" class="fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">Latest News Classifier</p>
-									</div>
-									<p class="text-left date">February 2020</p>
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">News Headline Classification through multiple machine learning model and given an article’s title and a brief article description.</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>JavaScript</li>
-											<li>Google App Script</li>
-										</ul>
-									</div> -->
-								</div>
-								<div class="details">
-									<div class="content">
-										<a href="https://medium.com/@badalchat/latest-news-classifier-fdb2c350ebc8" target="_blank">
-											<button type="button" class="btn btn-light">Medium</button>
-										</a>
-										<br>
-										<br>
-										<a href=" https://github.com/badalchat/Latest-News-Classifier" target="_blank">
-											<button type="button" class="btn btn-light">Github</button>
-										</a>
-									</div>
-								</div>
-							</div>
- 						</div>
-
- 						<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.5s">
- 							<div class="inner-container project-container">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/Tableau.png')}}" class="fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">Tableau Dashboard(Process)</p>
-									</div>
-									<p class="text-left date"> October 2020</p>
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">A dashboard is a consolidated display of many worksheets and related information in a single place.</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>Apache Beam</li>
-											<li>Google Dataflow</li>
-											<li>Google Pubsub</li>
-										</ul>
-									</div> -->
-									<div class="details">
-										<div class="content">
-											<a href="https://github.com/badalchat/Pandas" target="_blank">
-												<button type="button" class="btn btn-light">Github</button>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
- 						</div>
- 						<div class="col-sm-4 col-xs-12 container wow fadeInLeft" data-wow-delay="0.3s">
- 							<div class="inner-container project-container">
- 							<!-- first row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-image-container">
-										<img src="{{ url_for('static', filename='img/etl-process.png')}}" class="fit-image img-fluid">
-									</div>
-								</div>
-								<!-- second row in the project container -->
-								<div class="row">
-									<div class="col-sm-12 project-column-title-container project-title-text">
-										<p class="text-left py-0 my-0">ETL Process (Pending)</p>
-									</div>
-									<p class="text-left date">2020</p>
-								</div>
-								<!-- third row in the project container -->
-								<div class="row">
-									<div class="container project-column-line-container">
-									</div>
-								</div>
-								<!-- forth row in the project container -->
-								<div class="row">
-									<div class="container project-column-p-container">
-										<p class="">ETL is a type of data integration that refers to the three steps (extract, transform, load) used to blend data from multiple sources.</p>
-									</div>
-								</div>
-								<!-- fifth row in the project container -->
-								<div class="row">
-									<!-- <div class="col-sm-6 project-column-skills-container left-skill">
-										<ul>
-											<li>Sklearn</li>
-											<li>Pandas</li>
-										</ul>
-									</div> -->
-									</div>
-									<div class="details">
-										<<!-- div class="content">
-											<button type="button" class="btn btn-light">Github</button>
-										</div> -->
-									</div>
-								</div>
-							</div>
-						</div>
- 					</div>
-	 			</div>
-	 		</div>
-	 	</div>
-	 </section>
-	 <!-- portfolio setion ends -->
-
-	<!-- About Section Beings --> 
-	<section id="about" class="section-padding">
-	 	<div class="container">
-	 		<div class="row">
-	 			<div class="col-md-6 text-right">
-	 				<h2 class="title-text">
-	 					Meet <br><span class="decorate">Badal</span>
-	 				</h2>
-	 			</div>
-	 			<div class="col-md-6 text-left">
-	 				<div class="about-text">
-	 					<p> 
-						Hello, my name is Badal Kumar. <br>
-						I am an entry-level data scientist, currently studying in GGCT,Jabalpur. In my years of studying, I have done some machine learning projects.
-						<br><br>
-						During my free time, I like to work on projects to improve my skills. I also write about my work and project to so share them with the world. It's been a great journey so far. <br> <br>
-						My goal is to provide value to society. <br>
-						Data is my pathway towards that goal.
-						</p>
-	 					
-	 					
-	 				</div>
-	 			</div>
-	 		</div>
-	 	</div>
-	 	
-	 </section>
-
-	 <!-- publication section begins -->
-	 <section id="publication" class="fadeInUp">
-	 	<div class="container-fluid">
-	 		<div class="row">
-	 			<div class="col-md-12">
-	 				<h2 class="text-center title text-dark my-3 py-3"><strong>Publications</strong></h2>
-
-	 				<!-- Carousell begins -->
-	 				<div class="carousel slide" id="my-carousel" data-ride="carousel">
-	 					<ol class="carousel-indicators">
-	 						<li data-target="#my-carousel" data-slide-to="0"></li>
-	 						<li data-target="#my-carousel" data-slide-to="1" class="active"></li>
-
-	 					</ol>
-
-	 					<div class="carousel-inner">
-	 						<!-- slide-1 -->
-	 						<div class="carousel-item text-center">
-	 							<div class="img-box border rounded-circle m-auto">
-	 								<a href="https://medium.com/@badalchat/skill-set-of-a-data-scientist-1c5f82b5702" target="_blank">
-	 									<img src="{{ url_for('static', filename='img/dataengineering.jpg')}}" class="d-block w-100 
-	 									">
-	 								</a>
-	 							</div>
-	 							<!-- py and my is setting padding and margin 1 rem on the y axis (top and botom) -->
-	 							<h5 class="py-1 my-1"><strong class="text-dark text-uppercase">Why are data engineers as important as data scientists</strong></h5>
-	 							<h6 class="text-dark m-1">by Badal Kumar</h6>
-	 							<p class="pt-3 text-white">Comparing the Roles of Data Engineers and Data Scientists in Determining the Value of the Data in your Organisation.
-
-	 							<div>
-	 								<a href="https://medium.com/@badalchat/data-preprocessing-e1acaeab92a0" target="_blank">
-	 									<button type="button" class="btn btn-light">Medium</button>
-	 								</a>
-	 							</div>
-	 						</div>
-
-	 						<!-- slide-2 -->
-	 						<div class="carousel-item text-center active">
-	 							<div class="img-box border rounded-circle m-auto">
-	 								<a href="https://medium.com/@badalchat/skill-set-of-a-data-scientist-1c5f82b5702" target="_blank">
-	 									<img src="{{ url_for('static', filename='img/plotlylogo.png')}}" class="d-block w-100 ">
-	 								</a>
-	 							</div>
-	 							<!-- py and my is setting padding and margin 1 rem on the y axis (top and botom) -->
-	 							<h5 class="py-1 my-1"><strong class="text-dark text-uppercase">Advance Guide to Data Visualization with Plotly </strong></h5>
-	 							<h6 class="text-dark m-1">by Badal Kumar</h6>
-	 							<p class="pt-3 text-white">An Advance Guide on How to Add and Customize Dropdown Menus, Sliders and Buttons to Level Up Your Visualizations with Plotly.</p>
-
-	 							<div>
-	 								<a href="https://github.com/badalchat/Python/tree/master/Data%20Visualization/04.Visualization%20with%20Plotly" target="_blank">
-	 									<button type="button" class="btn btn-light">GitHub</button>
-	 								</a>
-	 							</div>
-	 						</div>
-
-	 					</div>
-
-	 					<!-- carousel controls -->
-	 					<a href="#my-carousel" class="carousel-control-prev" role="button" data-slide="prev">
-	 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	 						<span class="sr-only">Previous</span>
-	 					</a>
-
-	 					<a href="#my-carousel" class="carousel-control-next" role="button" data-slide="next">
-	 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-	 						<span class="sr-only">Next</span>
-	 					</a>
-	 				</div>
-	 			</div>
-	 		</div>
-	 	</div>
-	 </section>
-
-	<!-- contact section begins -->
-	<section class="section-padding" id="contact">
-		<div class="container">
-
-			<!-- Title Text -->
-			<div class="contact-sec text-center">
-				<h2>Get In <span class="decorate">Touch!</span></h2>
-				<p>If you're interested in my services, do reach me.</p>
-				<p>LinkedIn - https://linkedin.com/in/badalchat</p>
-				<p>Github - https://github.com/badalchat</p>
-				<p>Medium - https://medium.com/@badalchat</p>
-				<p>Twitter - https://twitter.com/@badalchat</p>
-			</div>
-			
-		</div>
-	</section>
-
-	 <script type="text/javascript">
-	 	 // smooth scroll effect
-	 	 $('html,body').smoothScroll(500); 
-	 </script>
-</body> 
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->	
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
 </html>
