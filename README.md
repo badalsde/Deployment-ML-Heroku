@@ -1,6 +1,8 @@
 # ML-Model-Flask-Deployment
 This is my first project deployed on production using Flask API on Heroku.
 
+Link: https://testmlmodel.herokuapp.com/
+
 Project Structure
 This project has four major parts :
 
