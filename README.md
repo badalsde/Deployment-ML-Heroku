@@ -17,6 +17,7 @@ web: gunicorn app:app
 Requirements:
 
 #run this
+
 pip freeze > requirements.txt
 
 
